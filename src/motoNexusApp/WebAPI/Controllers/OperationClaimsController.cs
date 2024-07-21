@@ -5,6 +5,7 @@ using Application.Features.OperationClaims.Queries.GetById;
 using Application.Features.OperationClaims.Queries.GetList;
 using Core.Application.Requests;
 using Core.Application.Responses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers;
@@ -21,6 +22,7 @@ public class OperationClaimsController : BaseController
     }
 
     [HttpGet]
+    [Authorize]
     public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
     {
         GetListOperationClaimQuery getListOperationClaimQuery = new() { PageRequest = pageRequest };
